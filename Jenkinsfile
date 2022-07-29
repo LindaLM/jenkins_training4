@@ -1,6 +1,9 @@
 pipeline {
     
     agent any
+    parameters {
+    gitParameter branchFilter: 'origin/(.*)', defaultValue: 'main', name: 'BRANCH', type: 'PT_BRANCH'
+    }
 
     options {
         timestamps ()
@@ -10,7 +13,7 @@ pipeline {
 
         stage('Checkout Stage') {
             steps {
-                git branch: 'main',
+                git branch: "${params.BRANCH}",
                 url: 'https://github.com/ochirkov/cicd-sessions-repo.git'
             }
         }
