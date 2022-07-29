@@ -23,13 +23,6 @@ pipeline {
                         sh "tox -e docs"
                     }
                 }
-
-                stage('Linters Stage') {
-                    steps {
-                        echo "it is linters stage"
-                        sh "tox -e linters"
-                    }
-                }
             }
         }
     }
