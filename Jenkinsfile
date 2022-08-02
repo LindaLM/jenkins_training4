@@ -19,8 +19,10 @@ pipeline {
             parallel {
                 stage('Docs Stage') {
                     steps {
-                        echo "it is docs stage"
-                        sh "tox -e docs"
+                        timestamps {
+                            echo "it is docs stage"
+                            sh "tox -e docs"
+                        }
                     }
                 }
             }
