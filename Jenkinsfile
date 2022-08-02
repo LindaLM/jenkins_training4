@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     parameters {
-    gitParameter branchFilter: 'origin/(.*)', defaultValue: 'main', name: 'BRANCH', type: 'PT_BRANCH'
+        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'main', name: 'BRANCH', type: 'PT_BRANCH'
     }
 
     stages {
@@ -19,10 +19,15 @@ pipeline {
             parallel {
                 stage('Docs Stage') {
                     steps {
-                        timestamps {
-                            echo "it is docs stage"
-                            sh "tox -e docs"
-                        }
+                        echo "it is docs stage"
+                        sh "tox -e docs"
+                    }
+                }
+
+                stage('Linters Stage') {
+                    steps {
+                        echo "IT'S LINTER STAGE"
+                        //sh "tox -e linters"
                     }
                 }
             }
