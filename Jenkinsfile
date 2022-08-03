@@ -30,6 +30,13 @@ pipeline {
                         //sh "tox -e linters"
                     }
                 }
+
+                stage('Linters Stage') {
+                    steps {
+                        echo "IT'S COVER STAGE"
+                        sh "tox -e cover"
+                    }
+                }
             }
         }
     }
